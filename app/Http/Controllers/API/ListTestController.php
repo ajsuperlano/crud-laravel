@@ -5,10 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Lista;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
-class ListController extends Controller
+class ListTestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,7 @@ class ListController extends Controller
      */
     public function index()
     {
-        // $lists = Lista::all();
-        $lists = DB::select('select * from lists ',);
+        $lists = Lista::all();
         return response()->json(['lists' => $lists]);
     }
 
@@ -30,20 +27,12 @@ class ListController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $validator = Validator::make($data, [
+        $data = request()->validate([
             'name' => 'required',
             'description' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(["errors" => $validator->errors()], 404);
-        }
-
-        // Lista::create($data);
-        DB::insert('insert into lists (name, description) values (?, ?)', [$data['name'], $data['description']]);
-
+        Lista::create($data);
         return response()->json([], 201);
     }
 
@@ -55,10 +44,9 @@ class ListController extends Controller
      */
     public function show($id)
     {
-        // $list = Lista::find($id);
-        $list = DB::select('select * from lists where id = ?', [$id]);
+        $list = Lista::find($id);
 
-        return response()->json(['data' => $list[0]], 200);
+        return response()->json(['data' => $list], 200);
     }
 
     /**
@@ -70,21 +58,16 @@ class ListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $list = Lista::find($id);
-        $data = $request->all();
+        $list = Lista::find($id);
 
-        $validator = Validator::make($data, [
-            'name' => 'required',
-            'description' => 'required',
+        $data = request()->validate([
+            'name' => '',
+            'description' => '',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(["errors" => $validator->errors()], 404);
-        }
+        $list->update($data);
 
-        // $list->update($data);
-        DB::update('update lists set name = ?, description = ? where id = ?', [$data['name'],$data['description'], $id]);
-        return response()->json(['data' => []], 200);
+        return response()->json(['data' => $list], 200);
     }
 
     /**
@@ -98,6 +81,6 @@ class ListController extends Controller
         $list = Lista::find($id);
         $list->delete();
 
-        return response()->json(["operacion" => "seses"], 200);
+        return response()->json([], 200);
     }
 }

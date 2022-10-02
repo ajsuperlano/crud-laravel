@@ -15,7 +15,7 @@ class ListTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->post('api/lists', [
+        $response = $this->post('api/lists_test', [
             'name' => 'test Name',
             'description' => 'test description',
         ]);
@@ -24,14 +24,13 @@ class ListTest extends TestCase
         $this->assertCount(1, Lista::all());
         $list = Lista::first();
 
-
         $this->assertEquals($list->name, 'test Name');
         $this->assertEquals($list->description, 'test description');
     }
     /** @test  */
     public function list_name_valide()
     {
-        $response = $this->post('api/lists', [
+        $response = $this->post('api/lists_test', [
             'name' => '',
             'description' => 'test description',
         ]);
@@ -41,7 +40,7 @@ class ListTest extends TestCase
     /** @test  */
     public function list_description_valide()
     {
-        $response = $this->post('api/lists', [
+        $response = $this->post('api/lists_test', [
             'name' => 'Test name',
             'description' => '',
         ]);
@@ -53,8 +52,8 @@ class ListTest extends TestCase
     public function list_retrieved()
     {
         $this->withoutExceptionHandling();
-        $lists = Lista::factory(10)->create();
-        $response = $this->getJson('api/lists');
+        $lists = Lista::factory(2)->create();
+        $response = $this->getJson('api/lists_test');
         $response->assertStatus(200);
 
         $response->assertJson(['lists' => $lists->toArray()]);
@@ -67,7 +66,7 @@ class ListTest extends TestCase
 
         $list = Lista::factory()->create();
 
-        $response = $this->getJson('api/lists/' . $list->id);
+        $response = $this->getJson('api/lists_test/' . $list->id);
         $response->assertStatus(200);
 
         $response->assertJson(['data' => $list->toArray()]);
@@ -81,7 +80,7 @@ class ListTest extends TestCase
 
         $list = Lista::factory()->create();
 
-        $response = $this->put('api/lists/' . $list->id, [
+        $response = $this->put('api/lists_test/' . $list->id, [
             'name' => 'updated Name',
             'description' => 'updated description',
         ]);
@@ -100,7 +99,7 @@ class ListTest extends TestCase
         $this->withoutExceptionHandling();
 
         $list = Lista::factory()->create();
-        $response = $this->delete('api/lists/' . $list->id);
+        $response = $this->delete('api/lists_test/' . $list->id);
         $response->assertStatus(200);
 
         $this->assertCount(0, Lista::all());
