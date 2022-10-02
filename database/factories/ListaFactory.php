@@ -16,8 +16,6 @@ class ListaFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'created_at' => now(),
-            'updated_at' => now(),
         ];
     }
 }

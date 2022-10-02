@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div>
-            <h2>Crud Listas</h2>
+            <h2>Crud Lista</h2>
             <input type="hidden" id="id">
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre</label>
