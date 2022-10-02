@@ -9,18 +9,26 @@
 
 ## About Laravel
 
-Prueba ListTest
+install dependencies
+
+composer install
+
+run migrations
+
+php artisan migrate
+
+run test
+
 ./vendor/bin/phpunit --filter ListTest
 
-Servicios rest : 
+Servicios
 
 get -> api/lists', filta el todos los registros
 
-post -> api/lists', ingresa un nuevo registro. 
+post -> api/lists', ingresa un nuevo registro.
 
 get -> api/lists/{id}', busca un registro
 
 put -> api/lists/{id}', modifica un registro
 
 delete -> api/lists/{id}', eliminar un registro
-

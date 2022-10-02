@@ -31,7 +31,7 @@
         </div>
         <hr>
         <div class="responsive">
-            <h2>Resultados</h2>
+            <h2></h2>
 
             <table class="table table-striped">
                 <tr>
