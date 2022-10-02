@@ -9,5 +9,12 @@
 
 ## About Laravel
 
-ListTest 
+Prueba ListTest
 ./vendor/bin/phpunit --filter ListTest
+
+Servicios rest : 
+get -> api/lists',
+post -> api/lists',
+get -> api/lists/{id}',
+put -> api/lists/{id}',
+delete -> api/lists/{id}',
