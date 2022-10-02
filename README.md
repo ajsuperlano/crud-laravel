@@ -9,17 +9,11 @@
 
 ## About Laravel
 
-install dependencies
+install dependencies : composer install
 
-composer install
+run migrations : php artisan migrate
 
-run migrations
-
-php artisan migrate
-
-run test
-
-./vendor/bin/phpunit --filter ListTest
+run test : ./vendor/bin/phpunit --filter ListTest
 
 Servicios
 
