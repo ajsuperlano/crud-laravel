@@ -13,8 +13,14 @@ Prueba ListTest
 ./vendor/bin/phpunit --filter ListTest
 
 Servicios rest : 
-get -> api/lists',
-post -> api/lists',
-get -> api/lists/{id}',
-put -> api/lists/{id}',
-delete -> api/lists/{id}',
+
+get -> api/lists', filta el todos los registros
+
+post -> api/lists', ingresa un nuevo registro. 
+
+get -> api/lists/{id}', busca un registro
+
+put -> api/lists/{id}', modifica un registro
+
+delete -> api/lists/{id}', eliminar un registro
+
